@@ -1,0 +1,108 @@
+/**
+ * Custom styles to immediately follow Tailwind’s `utilities` layer
+ *
+ * Add your own utility classes to this theme. Complex utility classes should
+ * be added using Tailwind’s plugin system:
+ *
+ * https://tailwindcss.com/docs/adding-custom-styles#adding-custom-utilities
+ */
+@keyframes pop-in {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+}
+
+[data-animate="fade-in-up"] {
+    @apply opacity-0 translate-y-6 transition-all duration-700 ease-out;
+}
+.is-visible[data-animate="fade-in-up"] {
+    @apply opacity-100 -translate-y-[20px];
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+    animation-name: fade-in-up;
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.7s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes slide-in-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.company__image,
+.company__description {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.company__cta-button {
+    @apply opacity-0 hover:-translate-y-1! hover:shadow-lg!;
+}
+
+
+.company--active .company__image {
+    animation: fade-in 0.6s ease forwards;
+}
+
+.company--active .company__description {
+    animation: slide-in-up 0.6s ease forwards;
+    animation-delay: 0.4s;
+}
+
+.company--active .company__cta-button {
+    animation: slide-in-up 0.6s ease forwards;
+    animation-delay: 0.6s;
+}
+
+

@@ -1,0 +1,252 @@
+/*!
+Theme Name: CZA Bouwbedrijf
+Theme URI: https://czabouwbedrijf.nl
+Description: A Custom Theme for CZA Bouwbedrijf, build with passion for Smartheads
+Version: 0.1.0
+Author: Bas van Dooremalen
+Author URI: https://underscoretw.com/
+Text Domain: cza-bouwbedrijf
+Requires at least: 6.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: LICENSE
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned.
+
+CZA Bouwbedrijf is based on _tw https://underscoretw.com/, (C) 2021-2025 Greg Sullivan
+_tw is distributed under the terms of the GNU GPL v2 or later.
+
+_tw is based on Underscores https://underscores.me/ and Varia https://github.com/Automattic/themes/tree/master/varia, (C) 2012-2025 Automattic, Inc.
+Underscores and Varia are distributed under the terms of the GNU GPL v2 or later.
+*/
+
+.site-header {
+    @apply w-full fixed top-0 z-10 transition-all ease-in-out;
+    ul {
+        @apply list-none;
+    }
+    &.is-fixed {
+        @apply bg-black/70 backdrop-blur-2xl shadow-2xl shadow-[#141529]/55;
+        .btn--quote {
+            @apply hover:bg-primary hover:text-foreground;
+            &:hover {
+                svg {
+                    path {
+                        @apply fill-foreground;
+                    }
+                }
+            };
+        }
+    }
+    @media(max-width:80rem){
+        .main-nav {
+            @apply min-h-screen w-full px-4 flex flex-col justify-center fixed top-0 left-0 bg-black/90 bg-radial from-0% via-[#141529]/51 via-60% to-[#141529]/80 to-80% backdrop-blur-2xl z-0
+            -translate-y-full transition-transform duration-500 ease-in-out;
+            &::after {
+                @apply absolute left-0 bottom-0 w-32 h-32 bg-background z-[5];
+                content: '';
+                clip-path: polygon(0 0, 100% 100%, 0 100%);
+            }
+
+            &.is-active {
+            @apply translate-y-0;
+                .menu-item {
+                    @apply opacity-100 translate-y-0;
+                }
+            }
+
+            .menu-item {
+                @apply flex flex-col items-center gap-4 opacity-0
+                text-white font-medium text-base 
+                translate-y-6 transition-all duration-500 ease-in-out;
+            }
+
+            .menu-item:nth-child(1) { @apply delay-100; }
+            .menu-item:nth-child(2) { @apply delay-200; }
+            .menu-item:nth-child(3) { @apply delay-300; }
+            .menu-item:nth-child(4) { @apply delay-400; }
+            .menu-item:nth-child(5) { @apply delay-500; }
+        }
+    }
+    .main-nav {
+        @apply mx-auto;
+        
+        .menu {
+            @apply flex flex-col gap-10 items-start
+            xl:justify-center xl:items-center xl:flex-row;
+            .menu-item {
+                @apply text-white font-medium text-base transition ease-linear hover:translate-y-1 hover:text-primary;
+                &.current_page_item {
+                    @apply text-primary;
+                }
+                &.current-page-ancestor {
+                    @apply text-primary!;
+                }
+                &.menu-item--mobile-only {
+                    @apply lg:hidden;
+                }
+            }
+        }
+        
+    }
+}
+
+.site-header__logo-image {
+    @apply w-52 relative;
+}
+
+.lock-scroll {
+    .site-header__upper {
+        @apply z-20;
+    }
+    .site-header__logo-image {
+        @apply z-20;
+    }
+    .btn--quote {
+        @apply z-20;
+    }
+}
+
+.site-header__upper {
+    @apply bg-primary relative z-20 px-4;
+
+    .upper {
+        @apply flex flex-col items-center gap-4 md:flex-row md:items-center md:justify-between md:px-6 xl:container xl:mx-auto xl:px-0;
+    }
+
+    .site-header__social-list {
+        @apply flex gap-6;
+    }
+
+    .site-header__social-link {
+        @apply flex transition pt-2.5 hover:opacity-65 md:py-2.5;
+    }
+
+    .site-header__contact {
+        @apply flex flex-row items-center justify-center gap-3 w-full md:justify-end;
+    }
+    .site-header__contact-item {
+        @apply text-[#141529] font-medium text-xs tracking-wider flex items-center gap-1 transition hover:text-black hover:underline  
+        max-md:pb-2.5
+        sm:gap-2;
+    }
+}
+
+.site-header__inner {
+    @apply flex items-center justify-between py-6 transition px-4
+    xl:container xl:mx-auto xl:justify-normal;
+}
+
+.btn--quote {
+    @apply max-sm:hidden! max-xl:ml-6;
+    &:hover {
+        svg {
+            path {
+                @apply fill-white;
+            }
+        }
+    };
+}
+
+.site-header__tools {
+    @apply flex items-center justify-end     
+    xl:w-full;
+}
+
+/* Exceptions */
+.page-child {
+    .menu-item {
+        @apply text-foreground!;
+    }
+    .site-header__logo-image {
+        filter: brightness(0) invert(0);
+        transition: filter .3s ease;
+    }
+    .site-header {
+        &.is-fixed {
+            .menu-item {
+                @apply text-white!;
+            }
+            .site-header__logo-image {
+                filter: brightness(0) invert(1);
+            }
+        }
+    }
+    &.lock-scroll {
+        .site-header__logo-image {
+            filter: brightness(0) invert(1);
+        }
+        .menu-item {
+            @apply text-white!;
+        }
+    }
+}
+/* Hamburger */
+.tham {
+    @apply flex cursor-pointer transition-opacity duration-150 ease-linear xl:hidden;
+}
+
+.tham-active {
+    @apply relative z-20;
+}
+
+.tham:hover {
+    @apply opacity-70;
+}
+
+.tham-box {
+    @apply relative inline-block w-8 h-5;
+}
+
+.tham-inner {
+    @apply absolute top-1/2 w-8 h-1 bg-primary rounded transition-transform duration-150 ease-in;
+    margin-top: -2px;
+}
+
+.tham-inner::before,
+.tham-inner::after {
+    content: "";
+    @apply absolute w-8 h-1 bg-inherit rounded transition-transform duration-150 ease-in;
+}
+
+.tham-inner::before {
+    top: -8px;
+}
+
+.tham-inner::after {
+    bottom: -8px;
+}
+
+/* Squeeze effect */
+.tham.tham-e-squeeze .tham-inner {
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    transition-duration: 75ms;
+}
+
+.tham.tham-e-squeeze .tham-inner::before {
+    transition: top 75ms ease 0.12s, opacity 75ms ease;
+}
+
+.tham.tham-e-squeeze .tham-inner::after {
+    transition: bottom 75ms ease 0.12s, transform 75ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+/* Active state */
+.tham.tham-e-squeeze.tham-active .tham-inner {
+    transform: rotate(45deg);
+    transition-delay: 0.12s;
+    transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.tham.tham-e-squeeze.tham-active .tham-inner::before {
+    top: 0;
+    opacity: 0;
+    transition: top 75ms ease, opacity 75ms ease 0.12s;
+}
+
+.tham.tham-e-squeeze.tham-active .tham-inner::after {
+    bottom: 0;
+    transform: rotate(-90deg);
+    transition: bottom 75ms ease, transform 75ms cubic-bezier(0.215, 0.61, 0.355, 1) 0.12s;
+}

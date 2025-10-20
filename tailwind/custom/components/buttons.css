@@ -1,0 +1,40 @@
+/* Buttons */
+.button {
+    @apply w-fit flex gap-2 items-center rounded-full transition ease-in-out px-6 py-3 text-base cursor-pointer 
+    hover:-translate-y-1 hover:shadow-lg;
+}
+.button--simple {
+    @apply justify-between rounded-none pl-0 py-4 w-full hover:bg-transparent hover:text-primary hover:shadow-none hover:translate-y-0;
+    .button-label {
+        @apply font-bold text-lg
+    }
+    .button-icon {
+        @apply pr-3;
+    }
+}
+.button--primary {
+    @apply bg-primary text-foreground font-semibold text-left hover:bg-foreground hover:text-white;
+}
+.button--secondary {
+    @apply bg-[#DEDEDE] text-tertiary font-semibold hover:bg-foreground hover:text-white;
+}
+.button--tertiary {
+    @apply border-[1px] border-solid border-[#141529] pr-0 py-0 hover:bg-white;
+    .button-label {
+        @apply pr-4;
+    }
+    .button-icon {
+        @apply rounded-full bg-[#141529] w-12 h-12 flex items-center justify-center;
+        svg {
+            @apply fill-white;
+        }
+    }   
+    &:hover {
+        .button-icon {
+            @apply bg-primary;
+            svg {
+                @apply fill-[#141529];
+            }
+        }
+    }
+}

@@ -1,0 +1,63 @@
+/* Forms */
+.wpcf7 {
+    @apply pt-4;
+    .uacf7-form-wrapper-container {
+        @apply flex flex-col gap-4;
+    }
+    .wpcf7-form-control:not(.wpcf7-radio) {
+        @apply w-full rounded-md border-[1px] border-solid px-8 py-5 flex items-center;
+        &::placeholder {
+            @apply text-[#141529] text-base font-normal;
+        }
+    }
+    .wpcf7-radio {
+        @apply flex py-4;
+        &.wpcf7-not-valid{
+            .wpcf7-list-item-label {    
+                @apply text-[#dc3232];
+            }
+        }
+        .wpcf7-list-item-label {
+            @apply pl-4 text-[#585858] text-sm;
+        }
+    }
+    .wpcf7-list-item {
+        @apply m-0;
+    }
+    .form-submit {
+        @apply pb-5 ml-auto;
+    }
+    .wpcf7-not-valid:not(.wpcf7-radio) {
+        @apply border-[#dc3232] border-[1px];
+    }
+    .form-submit {
+        @apply pb-10 sm:pb-5;
+        .button-label {
+            @apply text-sm sm:text-base;
+        }
+    }
+    .form-control__wrapper {
+        @apply flex flex-col xl:flex-row gap-4
+    }
+}
+
+body{
+    &.home{
+        .form-control__wrapper {
+            @apply flex-col!;
+        }
+    }
+}
+/* Validation */
+.wpcf7 form.invalid .wpcf7-response-output, .wpcf7 form.unaccepted .wpcf7-response-output, .wpcf7 form.payment-required .wpcf7-response-output {
+    @apply border-none;
+}
+.wpcf7 form .wpcf7-response-output {
+    @apply m-0 p-0 border-none;
+}
+.wpcf7-not-valid-tip {
+    @apply hidden;
+}
+.wpcf7-response-output {
+    @apply text-[#585858] text-sm hidden;
+}
