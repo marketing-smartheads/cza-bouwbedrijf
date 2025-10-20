@@ -150,7 +150,7 @@ $certifications             = $site_footer['certifications'] ?? [];
         </div>
 
         <div class="site-footer__copy">
-            <a href="#" itemprop="url">Algemene voorwaarden</a>
+            <a href="http://cza-bouwbedrijf.smartheads/wp-content/uploads/2025/10/AV-CZA-Bouwbderijf.pdf#" itemprop="url" target="_blank">Algemene voorwaarden</a>
         </div>
 
         <img src="<?php echo esc_url($logo_mark_url); ?>" alt="<?php echo esc_attr($site_name); ?>" width="453" height="329" loading="lazy" itemprop="logo" class="site-footer__logo-mark-image">

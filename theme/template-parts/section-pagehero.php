@@ -1,6 +1,8 @@
 <?php  
-    // ACF Vars
+    // Theme vars
+    $heading_tag = is_page_template('page-seo.php') ? 'h2' : 'h1';
 
+    // ACF Vars
     // Featured image
     $hero_image = has_post_thumbnail() ? get_the_post_thumbnail(null, 'full', ['class' => 'hero__image-media', 'alt' => get_the_title()]) : '';
 
@@ -27,9 +29,10 @@
     <?php endif; ?>
 
     <div class="hero__content">
-        <h1 class="hero__title" itemprop="headline">
+        <<?php echo $heading_tag; ?> class="hero__title" itemprop="headline">
             <?php echo esc_html($hero_title); ?>
-        </h1>
+        </<?php echo $heading_tag; ?>>
+
 
         <?php if ($hero_description) : ?>
 			<div class="hero__description hero__subtitle" itemprop="description">
