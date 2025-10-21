@@ -59,7 +59,7 @@ get_header();
 
 <?php get_template_part('template-parts/section', 'pagehero'); ?>
 
-<section class="services -mt-52 pt-0 pb-16" itemscope itemtype="https://schema.org/LocalBusiness">
+<section class="services -mt-52 pt-0 pb-16 px-4" itemscope itemtype="https://schema.org/LocalBusiness">
     <meta itemprop="name" content="CZA Bouwbedrijf">
     <meta itemprop="url" content="<?= esc_url(get_permalink()) ?>">
     <div class="xl:container xl:mx-auto pb-16">

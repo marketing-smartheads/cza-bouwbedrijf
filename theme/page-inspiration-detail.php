@@ -130,9 +130,9 @@ get_header();
 </section>
 
 
-<section class="quote relative -top-22" itemscope itemtype="https://schema.org/ContactPage">
-    <div class="quote__container top-0!">
-        <div class="quote__content items-start!">
+<section class="quote" itemscope itemtype="https://schema.org/ContactPage">
+    <div class="quote__container">
+        <div class="quote__content">
 
             <div class="quote__form-wrapper" data-animate="fade-in-up">
                 <header class="quote__header pb-16" data-animate="fade-in-up">

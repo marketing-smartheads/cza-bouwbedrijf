@@ -162,8 +162,8 @@ $contact_form_text    = $contact['form_text'] ?? '';
 <?php get_template_part('template-parts/section', 'promo'); ?>
 
 <section class="quote" itemscope itemtype="https://schema.org/ContactPage">
-    <div class="quote__container top-0!">
-        <div class="quote__content items-start!">
+    <div class="quote__container mt-0! pb-0!">
+        <div class="quote__content">
 
             <div class="quote__form-wrapper" data-animate="fade-in-up">
                 <header class="quote__header pb-16" data-animate="fade-in-up">

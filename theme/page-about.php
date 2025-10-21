@@ -54,7 +54,7 @@ get_header();
 <?php get_template_part('template-parts/section', 'pagehero'); ?>
 
 <section class="company-intro">
-    <div class="company-intro__container">
+    <div class="company-intro__container px-0!">
 
         <?php if ($image): ?>
         <div class="company-intro__image" data-animate="fade-in-up">
@@ -76,7 +76,7 @@ get_header();
 <section class="services pt-0 pb-16" itemscope itemtype="https://schema.org/LocalBusiness" data-animate="fade-in-up">
     <meta itemprop="name" content="CZA Bouwbedrijf">
     <meta itemprop="url" content="<?= esc_url(get_permalink()) ?>">
-    <div class="xl:container xl:mx-auto pb-16">
+    <div class="xl:container xl:mx-auto pb-16 px-4">
         <?php get_template_part( 'template-parts/layout/services', 'list' ); ?>
     </div>
 </section>
@@ -100,9 +100,9 @@ $contact_description  = $contact['description'] ?? '';
 $contact_form_text    = $contact['form_text'] ?? '';
 ?>
 
-<section class="quote pt-22" itemscope itemtype="https://schema.org/ContactPage">
-    <div class="quote__container top-0!">
-        <div class="quote__content items-start!">
+<section class="quote" itemscope itemtype="https://schema.org/ContactPage">
+    <div class="quote__container">
+        <div class="quote__content">
 
             <div class="quote__form-wrapper" data-animate="fade-in-up">
                 <header class="quote__header pb-16" data-animate="fade-in-up">

@@ -6,7 +6,6 @@
  */
 
 get_header();
-$cza = get_field('cza_blocks');
 
 ?>
 
@@ -24,13 +23,15 @@ $cza = get_field('cza_blocks');
 
 <?php get_template_part('template-parts/section', 'promo'); ?>
 
+<section class="reviews">
+    <h2>Wat onze klanten zeggen</h2>
+    <?php echo do_shortcode('[trustindex no-registration=google]'); ?>
+</section>
+
 <?php get_template_part('template-parts/section', 'tiktok'); ?>
 
 <?php get_template_part('template-parts/section', 'content'); ?>
 
 <?php get_template_part('template-parts/service', 'area'); ?>
-
-
-
 
 <?php get_footer(); ?>
