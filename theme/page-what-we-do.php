@@ -76,7 +76,7 @@ get_header();
 <?php get_template_part( 'template-parts/layout/service', 'items' ); ?>
 
 <section class="quote" itemscope itemtype="https://schema.org/ContactPage">
-    <div class="quote__container mt-0! pb-0!">
+    <div class="quote__container mt-0! pb-2!">
         <div class="quote__content">
 
             <div class="quote__form-wrapper" data-animate="fade-in-up">

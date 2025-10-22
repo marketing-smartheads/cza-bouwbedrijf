@@ -1489,10 +1489,10 @@ section.image-columns > div > div h2:after {
 		}
 	}
 	.seo__list_item { 
-		@apply flex flex-col items-center! justify-center
+		@apply flex flex-col items-center justify-center
 		xl:flex-row xl:items-stretch;
 		.cza__content-block {
-			@apply flex flex-col justify-center w-full h-full md:w-1/2;
+			@apply flex flex-col justify-center w-full h-auto md:w-1/2;
 			.cza__content-inner {
 				@apply py-16 xl:py-20 xl:px-20;
 			}
@@ -1500,7 +1500,7 @@ section.image-columns > div > div h2:after {
 				@apply text-lg font-normal leading-8 text-foreground;
 			}
 			&.cza__content-block--image {
-				@apply h-full xl:pl-0!;
+				@apply h-auto xl:pl-0!;
 			}
 			h3 {
 				@apply text-[#2F292B] font-normal text-2xl;
