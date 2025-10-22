@@ -5,9 +5,9 @@ Template Name: Landingspagina
 get_header();
 
 // ACF Vars
-$seo            = get_field('seo');
-$steps          = get_field('seo_steps');
-$service_title  = array_reduce($seo['services'] ?? [], function ($carry, $block) {
+$seo = get_field('seo');
+$services = is_array($seo['services'] ?? null) ? $seo['services'] : [];
+$service_title = array_reduce($services, function ($carry, $block) {
     return $carry ?: ($block['acf_fc_layout'] === 'content' && !empty($block['title']) ? $block['title'] : null);
 });
 
@@ -30,19 +30,21 @@ $visual     = !empty($guide['visual']) ? $guide['visual']['url'] : null;
                 <?php echo $seo['main_text']; ?>
             </div>
         <?php endif; ?>
-        <?php if ($steps): ?>
-        <ol class="cza-steps-list">
-            <?php foreach ($steps as $step): ?>
-            <li class="cza-steps-list__item" data-animate="fade-in-up">
-                <?php if (!empty($step['title'])): ?>
-                    <h3 class="cza-steps-list__title"><?php echo $step['title']; ?></h3>
-                <?php endif; ?>
-                <?php if (!empty($step['description'])): ?>
-                    <div class="cza-steps-list__description"><?php echo $step['description']; ?></div>
-                <?php endif; ?>
-            </li>
-            <?php endforeach; ?>
-        </ol>
+        <?php
+            $steps = is_array(get_field('seo_steps')) ? get_field('seo_steps') : [];
+            if ($steps): ?>
+            <ol class="cza-steps-list">
+                <?php foreach ($steps as $step): ?>
+                <li class="cza-steps-list__item" data-animate="fade-in-up">
+                    <?php if (!empty($step['title'])): ?>
+                        <h3 class="cza-steps-list__title"><?php echo $step['title']; ?></h3>
+                    <?php endif; ?>
+                    <?php if (!empty($step['description'])): ?>
+                        <div class="cza-steps-list__description"><?php echo $step['description']; ?></div>
+                    <?php endif; ?>
+                </li>
+                <?php endforeach; ?>
+            </ol>
         <?php endif; ?>
 
     </div>
@@ -50,17 +52,15 @@ $visual     = !empty($guide['visual']) ? $guide['visual']['url'] : null;
 
 <?php get_template_part('template-parts/section', 'primarypromo'); ?>
 
+<?php if (!empty($service_title)): ?>
 <section class="services seo_services">
-    
     <div class="services__container">
         <header class="services__header">
             <div class="services__heading" data-animate="fade-in-up">                
-                <?php if ($service_title): ?>
-                    <h2 class="services__title heading-title"><?= esc_html($service_title) ?></h2>
-                <?php endif; ?>
+                <h2 class="services__title heading-title"><?= esc_html($service_title) ?></h2>
             </div>
             
-            <a href="<?php echo get_site_url(); ?>/wat-wij-doen" class="button button--tertiary services__cta" data-animate="fade-in-up">
+            <a href="<?= esc_url(get_site_url() . '/wat-wij-doen') ?>" class="button button--tertiary services__cta" data-animate="fade-in-up">
                 <span class="button-label">Bekijk diensten</span>
                 <span class="button-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
@@ -68,21 +68,18 @@ $visual     = !empty($guide['visual']) ? $guide['visual']['url'] : null;
                     </svg>
                 </span>
             </a>
-        
         </header>
 
-        <?php get_template_part( 'template-parts/layout/services', 'list-seo' ); ?>
-
+        <?php get_template_part('template-parts/layout/services', 'list-seo'); ?>
+    </div>
 </section>
-
-
+<?php endif; ?>
 
 <?php get_template_part('template-parts/section', 'quote'); ?>
 
 <?php get_template_part('template-parts/cza', 'seoblocks'); ?>
 
 <?php get_template_part('template-parts/section', 'inspiration'); ?>
-
 
 <section class="reviews">
     <h2>Wat onze klanten zeggen</h2>

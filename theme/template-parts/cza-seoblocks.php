@@ -21,7 +21,9 @@ $heading_title = $blocks['heading_title'] ?? '';
                 <li class="seo__list_item">
                     <?php if ($text): ?>
                         <div class="cza__content-block cza__content-block--text" data-animate="fade-in-up">
-                            <?= wp_kses_post($text) ?>
+                            <div class="cza__content-inner">
+                                <?= wp_kses_post($text) ?>
+                            </div>
                         </div>
                     <?php endif; ?>
 
