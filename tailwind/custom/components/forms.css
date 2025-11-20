@@ -61,3 +61,17 @@ body{
 .wpcf7-response-output {
     @apply text-[#585858] text-sm hidden;
 }
+
+
+#wpcf7-f784-o2 {
+    .wpcf7-form {
+        &.sent {
+            .uacf7-form-wrapper-container {
+                @apply hidden;
+            }   
+            .wpcf7-response-output {
+                @apply flex! font-semibold;
+            }
+        }
+    }
+}
