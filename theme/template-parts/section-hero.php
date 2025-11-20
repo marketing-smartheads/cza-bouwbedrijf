@@ -17,7 +17,13 @@ $link_target = is_array($link) ? ($link['target'] ?? '_self') : '_self';
     if ($video): ?>
         <div class="hero__video-wrapper">
             <div class="hero__video-loader"></div>
-            <video class="hero__video" autoplay muted loop playsinline>
+            <video class="hero__video" 
+            autoplay 
+            muted
+            loop
+            playsinline
+            webkit-playsinline
+            preload="auto">
                 <source src="<?= esc_url($video['url']) ?>" type="video/mp4">
             </video> 
         </div>

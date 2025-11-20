@@ -59,11 +59,7 @@ input:focus {
 	}
 
 	.hero__video {
-		@apply w-full h-full object-cover opacity-0 transition-opacity duration-1000;
-	}
-
-	.hero__video {
-		@apply absolute top-0 left-0 object-cover h-[90vh] w-full xl:h-screen;
+		@apply absolute top-0 left-0 w-full h-[90vh] xl:h-screen object-cover opacity-100 transition-opacity duration-1000;
 	}
 	&::after {
 		@apply absolute left-0 bottom-0 w-32 h-32 bg-background z-[5];
@@ -109,7 +105,7 @@ input:focus {
 		}
 	}
 	.hero--button {
-		@apply text-lg! opacity-0 translate-y-4 transition-all duration-500 mx-auto hover:-translate-y-1! hover:shadow-lg!;
+		@apply text-lg! opacity-0 translate-y-4 transition-all duration-500 mx-auto hover:-translate-y-0! hover:shadow-lg!;
 		&.animate-in {
 			@apply opacity-100 translate-y-0;
 		}
@@ -324,7 +320,7 @@ body.home {
 		@apply w-full h-[50vh] object-cover xl:h-[75vh];
 	}
 	.quote__container {
-		@apply relative 
+		@apply relative -mt-[30vh]
 		 xl:container xl:mx-auto 2xl:pb-96 2xl:-mt-[60vh];
 	}
 	.quote__form-wrapper {
@@ -411,7 +407,7 @@ body.home {
 		
 	}
 	.cza__block {	
-		@apply w-full pb-10 lg:pb-0 lg:grid lg:grid-cols-2;
+		@apply flex flex-col max-xl:nth-[odd]:flex-col-reverse w-full pb-10 lg:pb-0 lg:grid lg:grid-cols-2;
 		.cza__text {
 			br{
 				@apply max-md:hidden;
@@ -584,7 +580,7 @@ body.home {
 		@apply xl:container xl:mx-auto xl:flex;
 	}	
 	.promo__content {
-		@apply flex flex-col justify-center bg-tertiary px-4 py-8 xl:pr-20 xl:py-10 xl:w-1/2;
+		@apply flex flex-col justify-center bg-tertiary px-4 sm:px-10 py-16 xl:px-16 xl:w-1/2;
 		h2, h3, h4, h5, h6 {
 			@apply text-white font-bold my-0 mb-6 text-3xl leading-10;
 		}
@@ -674,7 +670,7 @@ body.home {
 .tips {
 	@apply px-4 pb-16 relative xl:pr-0;
 	.tips__container {
-		@apply xl:pl-18 2xl:pl-42;
+		@apply 2xl:pl-42;
 	}
 	.tips-swiper {
 		@apply pb-6;
@@ -698,14 +694,12 @@ body.home {
 				@apply w-full h-[35rem] object-cover rounded-tl-2xl rounded-tr-2xl;
 			}
 		}
-		.tips-card__description {
-			@apply pl-10;
+		.tips-card__description {			
 			p {
-				@apply truncate;
+				@apply min-h-24 overflow-hidden;
 			}
 		}
 		.tips-card__link {
-			@apply ml-auto;
 			&:hover {
 				.button-icon {
 					@apply bg-black;
@@ -799,6 +793,9 @@ body.home {
 	.service-area__list {
 		@apply text-xl gap-5 grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3;
 		.service-area__location {
+			@apply flex items-baseline gap-6;
+		}
+		.service-area__link {
 			@apply flex items-baseline gap-6;
 		}
 	}
@@ -1588,4 +1585,51 @@ section.image-columns > div > div h2:after {
 			}			
 		}
 	}
+}
+
+.popup-overlay {
+  @apply fixed inset-0 bg-tertiary/60 opacity-0 invisible transition duration-300 z-[9998];
+}
+
+.popup-overlay.active {
+  @apply opacity-100 visible;
+}
+
+.popup {
+  @apply fixed top-1/2 left-1/2 w-[90%] max-w-[480px]
+         bg-background text-foreground font-primary
+         rounded-xl shadow-2xl p-8
+         opacity-0 invisible transition duration-300
+         -translate-x-1/2 -translate-y-[40%] z-[9999];
+}
+
+.popup.active {
+  @apply opacity-100 visible -translate-y-1/2;
+}
+
+.popup__close {
+  @apply absolute top-3 right-3 text-3xl cursor-pointer 
+         opacity-60 hover:opacity-100 bg-transparent border-none;
+}
+
+.popup__image img {
+  @apply w-full rounded-lg mb-5;
+}
+
+.popup__title {
+  @apply text-lg xl:text-2xl mb-2 font-bold text-foreground font-primary;
+}
+
+.popup__subtitle {
+  @apply text-base xl:text-lg mb-2 text-foreground/80 font-primary;
+}
+
+.popup__text {
+  @apply leading-relaxed max-xl:max-h-16 max-xl:overflow-y-auto;
+}
+.popup__footer {
+	@apply flex pt-4;
+}
+.popup__button {
+  @apply flex items-center gap-3 w-full bg-primary text-tertiary px-5 py-3 rounded-lg no-underline hover:bg-foreground hover:text-white font-bold uppercase text-base transition;
 }

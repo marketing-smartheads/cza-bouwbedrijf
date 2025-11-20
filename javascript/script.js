@@ -37,25 +37,44 @@ document.addEventListener("DOMContentLoaded", () => {
     
     // Hero
     document.querySelectorAll('.hero__video').forEach(video => {
-        const wrapper = video.closest('.hero__video-wrapper');
-        const loader = wrapper?.querySelector('.hero__video-loader');
+        const loader = video.closest('.hero__video-wrapper')?.querySelector('.hero__video-loader');
 
-        function revealVideo() {
-            video.style.opacity = '1';
+        function hideLoader() {
             if (loader) loader.style.opacity = '0';
         }
 
-        video.addEventListener('loadeddata', revealVideo);
-        video.addEventListener('canplay', revealVideo);        
+        video.addEventListener('loadeddata', hideLoader);
+        video.addEventListener('canplay', hideLoader);
+
+        // fallback na 3 sec
+        setTimeout(hideLoader, 3000);
     });
 
-    setTimeout(() => {
-        document.querySelectorAll('.hero__video').forEach(video => {
-            video.style.opacity = '1';
-            const loader = video.closest('.hero__video-wrapper')?.querySelector('.hero__video-loader');
-            if (loader) loader.style.opacity = '0';
-        });
-    }, 3000); 
+    // Popup
+    const popup = document.getElementById("popup");
+    const overlay = document.getElementById("popup-overlay");
+    const closeBtn = document.getElementById("popup-close");
+
+    if (!popup || !overlay || !closeBtn) return;
+
+    const showPopup = () => {
+        popup.classList.add("active");
+        overlay.classList.add("active");
+    };
+
+    const closePopup = () => {
+        popup.classList.remove("active");
+        overlay.classList.remove("active");
+    };
+
+    setTimeout(showPopup, 60000);
+
+    closeBtn.addEventListener("click", closePopup);
+    overlay.addEventListener("click", closePopup);
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closePopup();
+    });
 
 
     // Carousel
@@ -218,22 +237,18 @@ document.addEventListener("DOMContentLoaded", () => {
         new Swiper(carousel, {
             slidesPerView: 1,
             spaceBetween: 30,
-            loop: true,
-            speed: 50000,
-            autoplay: autoplay ? {
-            delay: 0,
-            disableOnInteraction: false,
-            pauseOnMouseEnter: true
-            } : false,
+            loop: false, 
+            speed: 300, 
+            autoplay: false, 
             freeMode: true,
-            freeModeMomentum: false,
+            freeModeMomentum: true, 
             breakpoints: {
-            768: {
-                slidesPerView: 2
-            },
-            1280: {
-                slidesPerView: 3
-            }
+                768: {
+                    slidesPerView: 2
+                },
+                1280: {
+                    slidesPerView: 3
+                }
             }
         });
     });
