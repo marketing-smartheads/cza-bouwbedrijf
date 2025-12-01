@@ -47,9 +47,7 @@ $contact_form_text    = $contact['form_text'] ?? '';
                             <?= wp_kses_post($contact_form_text) ?>
                         </h4>
                     <?php endif; ?>
-
-                    <?php echo do_shortcode('[contact-form-7 id="cd42577" title="Contactformulier 1"]'); ?>
-                    
+                    <?php echo do_shortcode('[contact-form-7 id="cd42577" title="Contactformulier 1"]'); ?>                     
                 </div>
             </div>
 

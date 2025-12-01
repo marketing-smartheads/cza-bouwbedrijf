@@ -35,6 +35,7 @@
 		"@wordpress/prettier-config": "^4.31.0",
 		"adm-zip": "^0.5.16",
 		"archiver": "^7.0.1",
+		"baseline-browser-mapping": "^2.8.31",
 		"browser-sync": "^3.0.4",
 		"cross-env": "^10.0.0",
 		"cssnano": "^7.1.1",

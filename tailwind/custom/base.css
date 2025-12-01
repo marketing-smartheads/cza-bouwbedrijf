@@ -312,7 +312,7 @@ body.home {
 }
 
 .quote {
-	@apply max-xl:px-4 pt-16;
+	@apply px-4 pt-16;
 	.quote__viusual {
 		@apply relative; 
 	}
@@ -1598,7 +1598,7 @@ section.image-columns > div > div h2:after {
 .popup {
   @apply fixed top-1/2 left-1/2 w-[90%] max-w-[480px]
          bg-background text-foreground font-primary
-         rounded-xl shadow-2xl p-8
+		 rounded-xl shadow-2xl p-8 h-auto
          opacity-0 invisible transition duration-300
          -translate-x-1/2 -translate-y-[40%] z-[9999];
 }
@@ -1613,7 +1613,7 @@ section.image-columns > div > div h2:after {
 }
 
 .popup__image img {
-  @apply w-full rounded-lg mb-5;
+  @apply w-full rounded-lg mb-5 h-48 object-cover;
 }
 
 .popup__title {
@@ -1625,7 +1625,7 @@ section.image-columns > div > div h2:after {
 }
 
 .popup__text {
-  @apply leading-relaxed max-xl:max-h-16 max-xl:overflow-y-auto;
+  @apply leading-relaxed pb-0 max-xl:max-h-16 max-xl:overflow-y-auto;
 }
 .popup__footer {
 	@apply flex pt-4;

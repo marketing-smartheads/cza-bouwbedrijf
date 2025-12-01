@@ -82,7 +82,7 @@ $has_popup = !empty($popup) && (
         </p>
     </header>
 
-    <div class="popup__content">
+    <div class="popup__content ">
         <p class="popup__text">
             <?php echo esc_html($popup['popup_text']); ?>
         </p>

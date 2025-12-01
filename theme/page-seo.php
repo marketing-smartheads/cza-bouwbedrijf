@@ -120,5 +120,4 @@ $visual     = !empty($guide['visual']) ? $guide['visual']['url'] : null;
 
 <?php get_template_part('template-parts/service', 'area'); ?>
 
-
 <?php get_footer(); ?>
