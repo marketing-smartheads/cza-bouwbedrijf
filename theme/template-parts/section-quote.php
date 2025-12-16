@@ -59,7 +59,9 @@
                 </div>
             </div>
 
-            <?php if (!empty($features)): ?>
+            <?php if (!empty($features)): 
+                $index = $index ?? 0;
+                ?>
                 <aside class="quote__features" data-animate="fade-in-up">
                     <ul class="quote__list">
                         <?php foreach ($features as $feature): ?>

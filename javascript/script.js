@@ -272,6 +272,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el));
 
+   document.addEventListener('wpcf7mailsent', function(event) {
+        window.location.href = 'https://czabouwbedrijf.nl/bedankt';
+    }, false);
+
     // Animation
     initHeroAnimation();
     initCompanyAnimation();
@@ -279,8 +283,6 @@ document.addEventListener("DOMContentLoaded", () => {
     initScrollAnimations();
     
 });
-
-
 
 function initHeroAnimation() {
     const heroTitle = document.querySelector('.hero__title');

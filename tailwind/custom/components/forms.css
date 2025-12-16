@@ -55,11 +55,8 @@ body{
 .wpcf7 form .wpcf7-response-output {
     @apply m-0 p-0 border-none;
 }
-.wpcf7-not-valid-tip {
-    @apply hidden;
-}
 .wpcf7-response-output {
-    @apply text-[#585858] text-sm hidden;
+    @apply text-[#585858] text-sm;
 }
 
 
