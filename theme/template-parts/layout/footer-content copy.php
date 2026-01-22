@@ -65,20 +65,18 @@ $popup = get_fields('option');
                 <div id="error-message" style="display:none;"></div>
                 <div id="success-message" style="display:none;"></div>
 
-                <div class="form-field">                    
+                <div class="form-field">
+                    <label for="EMAIL">Vul je e-mailadres in om de gids te ontvangen</label>
                     <input type="email" id="EMAIL" name="EMAIL" placeholder="uw@e-mailadres.nl" required>
                     <div class="entry__error"></div>
                 </div>
 
-                <div class="g-recaptcha" data-sitekey="6LfWqDssAAAAAPy2f-rdz13N03E0rSfICKo0xVyN"></div>
-
-                <button type="submit" class="popup__submit button button--primary">
+                <button type="submit" class="popup__submit">
                     <svg class="sib-hide-loader-icon" style="display:none;"></svg>
-                    <span class="button-label">Ontvang de inspiratiegids</span>
-                    
+                    <span>Ontvang de inspiratiegids</span>
                 </button>
 
-                <input type="text" name="email_address_check" value="" class="input--hidden button button-primary">
+                <input type="text" name="email_address_check" value="" class="input--hidden">
                 <input type="hidden" name="locale" value="en">
                 <input type="hidden" name="html_type" value="simple">
 
@@ -99,12 +97,12 @@ $popup = get_fields('option');
         <?php endif; ?>
 
         <header class="popup__header">
-            <h2 class="popup__title" id="popup-title"><?php echo wp_kses_post($popup['popup_title']); ?></h2>
-            <p class="popup__subtitle"><?php echo wp_kses_post($popup['popup_subtitle']); ?></p>
+            <h2 class="popup__title" id="popup-title"><?php echo esc_html($popup['popup_title']); ?></h2>
+            <p class="popup__subtitle"><?php echo esc_html($popup['popup_subtitle']); ?></p>
         </header>
 
         <div class="popup__content">
-            <p class="popup__text"><?php echo wp_kses_post($popup['popup_text']); ?></p>
+            <p class="popup__text"><?php echo esc_html($popup['popup_text']); ?></p>
         </div>
 
         <footer class="popup__footer">
@@ -113,21 +111,16 @@ $popup = get_fields('option');
         </footer>
     </aside>
 
-<?php endif; ?>
+    <?php endif; ?>
 
-<a href="https://wa.me/3197010288887?text=Hoi%20Ben%2C%20ik%20wil%20graag%20de%2060-seconden%20check%20doen%20voor%20mijn%20verbouwing." target="_blank" class="whatsapp-popup group animate-inAndBreathe">
+<a href="https://wa.me/3197010288887" target="_blank" class="whatsapp-popup group animate-inAndBreathe"> 
     <span class="whatsapp-svg">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
             <path class="group-hover:fill-white" d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
         </svg>
     </span>
-
-    <p>
-        <span class="group-hover:text-foreground">Doe de 60-seconden check</span>
-        <span class="group-hover:text-foreground">past jouw verbouwing bij CZA?</span>
-    </p>
+    <p><span class="group-hover:text-foreground">Stel je vraag aan:</span><span class="group-hover:text-foreground">Ben de Voorman</span></p>
 </a>
-
 
 <footer id="colophon" class="site-footer" itemscope itemtype="https://schema.org/WPFooter">
     <div class="site-footer__container" itemscope itemtype="https://schema.org/Organization">

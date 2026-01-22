@@ -72,3 +72,65 @@ body{
         }
     }
 }
+
+.sib-form {
+    @apply p-0!;
+    input {
+        @apply w-full rounded-md border-[1px] border-solid px-5 py-3 flex items-center my-3;
+        &::placeholder {
+            @apply text-[#141529] text-base font-normal;
+        }
+    }
+   
+    .sib-form-block__button-disabled {
+        @apply bg-transparent opacity-100! text-red-600 text-sm p-0! hover:shadow-none hover:translate-y-0;
+    }
+    .popup__submit {
+        @apply max-sm:text-sm my-3 w-full justify-center;
+    }
+    .g-recaptcha {
+        div {
+            @apply xl:w-full!; 
+
+            iframe {
+                @apply max-sm:w-[86%]!;
+            }
+        }
+    }
+    /* Alleen tonen NA submit-poging */
+    form.is-submitted input:invalid {
+        border-color: red;
+    }
+
+    /* Optioneel: foutmelding */
+    form.is-submitted input:invalid + .entry__error::after {
+        content: "Vul een geldig e-mailadres in";
+    }
+
+}
+
+.sib-form-message-panel {
+    display: none;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.sib-form-message-panel--success {
+    display: block;
+    background: #e6f7ec;
+    color: #0f5132;
+}
+
+.sib-form-message-panel--error {
+    display: block;
+    background: #fdecea;
+    color: #842029;
+}
+
+.sib-form-message-panel__field-error {
+    color: #842029;
+    font-size: 0.8rem;
+    margin-top: 0.25rem;
+}

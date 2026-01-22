@@ -75,7 +75,7 @@ $visual     = !empty($guide['visual']) ? $guide['visual']['url'] : null;
 </section>
 <?php endif; ?>
 
-<?php get_template_part('template-parts/section', 'quote'); ?>
+<?php get_template_part('template-parts/section', 'quote-seo'); ?>
 
 <?php get_template_part('template-parts/cza', 'seoblocks'); ?>
 
@@ -102,12 +102,10 @@ $visual     = !empty($guide['visual']) ? $guide['visual']['url'] : null;
                             <?php echo esc_html($title); ?>
                         </h2>
 
-                        <p class="inspiration-guide__subtitle">
-                            <?php echo esc_html($sub_title); ?>
-                        </p>
+                        <p class="inspiration-guide__subtitle">Deze projecten hebben wij bij jou in de buurt gerealiseerd.</p>
 
                         <?php if ($visual): ?>
-                            <img class="inspiration-guide__background-image" src="<?php echo esc_url($visual); ?>" alt="Visueel" loading="lazy" width="317" height="200" />                    
+                            <img class="inspiration-guide__background-image" src="https://czabouwbedrijf.nl/wp-content/uploads/2025/10/Rectangle-4036.png" alt="Visueel" loading="lazy" width="317" height="200" />                    
                         <?php endif; ?>
 
                         <?php echo do_shortcode('[contact-form-7 id="c4dd875" title="Inspiratiegids"]'); ?>

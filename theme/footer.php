@@ -10,9 +10,9 @@
  */
 
 ?>
-
-
 	<?php get_template_part( 'template-parts/layout/footer', 'content' ); ?>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <?php wp_footer(); ?>
 

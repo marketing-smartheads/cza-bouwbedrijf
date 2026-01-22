@@ -220,3 +220,53 @@ require get_template_directory() . '/inc/template-tags.php';
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+
+function register_landingspaginas_menu() {
+    register_nav_menu(
+        'landingspaginas',
+        __('Landingspagina\'s', 'cza-bouwbedrijf')
+    );
+}
+add_action('after_setup_theme', 'register_landingspaginas_menu');
+
+
+class Mobile_Submenu_Walker extends Walker_Nav_Menu {
+    function start_el(&$output, $item, $depth = 0, $args = array(), $id = 0) {
+        $classes = empty($item->classes) ? array() : (array) $item->classes;
+        $has_children = in_array('menu-item-has-children', $classes);
+        
+        $output .= '<li class="' . implode(' ', $classes) . '">';
+        $output .= '<a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
+
+        if ($has_children) {
+            $output .= '<button class="submenu-toggle" aria-expanded="false"><span class="chevron"></span></button>';
+        }
+    }
+
+    function end_el(&$output, $item, $depth = 0, $args = array()) {
+        $output .= "</li>\n";
+    }
+}
+
+function theme_enqueue_brevo_form_assets() {
+    // Brevo CSS
+    wp_enqueue_style(
+        'brevo-form',
+        'https://sibforms.com/forms/end-form/build/sib-styles.css',
+        [],
+        null
+    );
+
+    // Brevo JS
+    wp_enqueue_script(
+        'brevo-form',
+        'https://sibforms.com/forms/end-form/build/main.js',
+        [],
+        null,
+        true
+    );
+
+}
+add_action('wp_enqueue_scripts', 'theme_enqueue_brevo_form_assets');
+
+

@@ -57,15 +57,50 @@
     }
     .certification-logos {
         @apply flex flex-col gap-6 md:flex-row;
+        figure {
+            @apply flex items-center;
+            img {
+                @apply object-contain;
+            }
+            &:first-child {
+                img{
+                    @apply w-40;
+                }
+            }
+            &:nth-child(2){
+                img {
+                    @apply w-64;
+                }
+            }
+            &:last-child {
+                @apply w-40;
+            }
+        }
     }
     .site-footer__copy {
-        @apply text-center pb-6; 
+        @apply text-center pb-24 sm:pb-6 pt-10; 
         a {
-            @apply text-sm transition ease-in hover:opacity-65;;
+            @apply text-sm transition ease-in underline hover:opacity-65;
+        }
+        p {
+            @apply text-sm italic pt-3;
+            br {
+                @apply max-sm:hidden;
+            }
         }
     }
     .site-footer__logo-mark-image {
-        @apply absolute bottom-0 right-0
+        @apply absolute bottom-0 right-0 z-0;
+    }
+
+    .landings-menu {
+        @apply relative z-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-6;
+        a {
+            @apply text-white pl-2.5 transition hover:underline hover:opacity-65 text-sm relative before:absolute before:left-0 before:top-0;
+            &::before {
+                content:'- ';
+            }
+        }
     }
 }
 
@@ -80,21 +115,20 @@
   50%      { transform: scale(1.05); }
 }
 
-/* één shorthand die beide animaties tegelijk zet */
 .animate-inAndBreathe {
-  animation: slideInUp 0.6s ease-out forwards,
-             breathe 3s ease-in-out infinite 0.6s;
-  will-change: transform, opacity;
+    animation: slideInUp 0.6s ease-out forwards,
+    breathe 3s ease-in-out infinite 0.6s;
+    will-change: transform, opacity;
 }
 
 
 .whatsapp-popup {
-  @apply fixed z-19 bottom-6 right-6
-         flex gap-2.5 items-center
-         border-green-400 border-2 border-solid bg-white text-foreground font-semibold 
-         pl-4 pr-6 py-2 rounded-full shadow-2xl 
-         transition duration-300 ease-in-out 
-         hover:bg-green-400 hover:scale-105;
+    @apply fixed z-19 bottom-6 right-6
+        flex gap-2.5 items-center
+        border-green-400 border-2 border-solid bg-white text-foreground font-semibold 
+        pl-4 pr-6 py-2 rounded-full shadow-2xl 
+        transition duration-300 ease-in-out 
+        hover:bg-green-400 hover:scale-105;
     .whatsapp-svg {
         @apply rounded-full w-10 h-10 flex items-center justify-center;
     }

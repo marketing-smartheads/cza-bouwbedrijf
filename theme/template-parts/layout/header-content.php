@@ -110,10 +110,10 @@ $social_links = [];
 				<ul class="menu">
 					<?php
 						wp_nav_menu([
-							'menu'        => 3,
-							'container'   => false,
-							'items_wrap'  => '%3$s', // Verwijdert extra <ul> zodat je eigen <ul> intact blijft
-							'fallback_cb' => false
+							'menu'   => 3,
+							'walker' => new Mobile_Submenu_Walker(),
+							'container' => false,
+							'items_wrap' => '%3$s'
 						]);
 						?>
 

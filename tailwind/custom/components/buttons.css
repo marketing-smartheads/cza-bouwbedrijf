@@ -1,6 +1,6 @@
 /* Buttons */
 .button {
-    @apply w-fit flex gap-2 items-center rounded-full transition ease-in-out px-6 py-3 text-base cursor-pointer 
+    @apply w-fit flex gap-2 items-center rounded-full transition ease-in-out px-6 py-3 text-sm md:text-base cursor-pointer 
     hover:-translate-y-1 hover:shadow-lg;
 }
 .button--simple {

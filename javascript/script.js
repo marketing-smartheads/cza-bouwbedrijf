@@ -35,6 +35,26 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     
+    // Mobile menu
+    const menuParents = document.querySelectorAll('.menu-item-has-children > a');
+
+    menuParents.forEach(parent => {
+        parent.addEventListener('click', function (e) {
+        const menuItem = this.parentElement;
+        
+        // Alleen op mobiel
+        if (window.innerWidth <= 1280) { 
+            // Toggle submenu
+            if (!menuItem.classList.contains('open')) {
+            e.preventDefault(); // voorkomt navigatie eerste klik
+            menuItem.classList.add('open');
+            } else {
+            // tweede klik: laat navigatie doorgaan
+            }
+        }
+        });
+    });
+    
     // Hero
     document.querySelectorAll('.hero__video').forEach(video => {
         const loader = video.closest('.hero__video-wrapper')?.querySelector('.hero__video-loader');
@@ -50,33 +70,71 @@ document.addEventListener("DOMContentLoaded", () => {
         setTimeout(hideLoader, 3000);
     });
 
+    // ===============================
     // Popup
+    // ===============================
     const popup = document.getElementById("popup");
     const overlay = document.getElementById("popup-overlay");
     const closeBtn = document.getElementById("popup-close");
+    const sibContainer = document.getElementById("sib-container");
+    const placeholder = document.getElementById("popup-form-placeholder");
 
-    if (!popup || !overlay || !closeBtn) return;
+    if (!popup || !overlay || !closeBtn || !sibContainer || !placeholder) return;
 
     const showPopup = () => {
-        popup.classList.add("active");
-        overlay.classList.add("active");
+    popup.classList.add("active");
+    overlay.classList.add("active");
+
+    if (!placeholder.hasChildNodes()) {
+        placeholder.appendChild(sibContainer.querySelector(".sib-form"));
+        sibContainer.style.display = "none";
+    }
     };
 
     const closePopup = () => {
-        popup.classList.remove("active");
-        overlay.classList.remove("active");
+    popup.classList.remove("active");
+    overlay.classList.remove("active");
     };
 
-    setTimeout(showPopup, 60000);
+    setTimeout(showPopup, 20000);
 
     closeBtn.addEventListener("click", closePopup);
     overlay.addEventListener("click", closePopup);
-
     document.addEventListener("keydown", (e) => {
-        if (e.key === "Escape") closePopup();
+    if (e.key === "Escape") closePopup();
     });
 
+    // ===============================
+    // Form & submit
+    // ===============================
+    const form = document.getElementById("sib-form");
+    const submitButton = document.querySelector(".popup__submit");
+    const submitText = submitButton?.querySelector("span");
 
+    if (!form || !submitButton || !submitText) return;
+
+    // 🔥 CAPTURE PHASE — vóór Brevo
+    form.addEventListener(
+    "submit",
+    function (e) {
+        form.classList.add("is-submitted");
+
+        // ❌ Ongeldig → STOP ALLES, Brevo krijgt niks
+        if (!form.checkValidity()) {
+        e.preventDefault();
+        e.stopImmediatePropagation(); // 🔑 dit is cruciaal
+        return;
+        }
+
+        // ✅ Geldig → success-tekst tonen
+        submitText.textContent =
+        "Klaar voor een dosis inspiratie? Bekijk uw mailbox.";
+    },
+    true // 👈 capture phase
+    );
+
+
+ 
     // Carousel
     document.querySelectorAll('[data-carousel]').forEach((carousel) => {
         const hasNav = carousel.hasAttribute('data-nav');
@@ -230,25 +288,26 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
+    
+    document.querySelectorAll('.tips-slider').forEach((wrapper) => {
+        const carousel = wrapper.querySelector('.tips-swiper');
+        const prevBtn = wrapper.querySelector('[data-carousel-prev]');
+        const nextBtn = wrapper.querySelector('[data-carousel-next]');
 
-    document.querySelectorAll('.tips-swiper').forEach((carousel) => {
-        const autoplay = carousel.dataset.autoplay === "true";
-        
-        new Swiper(carousel, {
+        const swiper = new Swiper(carousel, {
             slidesPerView: 1,
             spaceBetween: 30,
-            loop: false, 
-            speed: 300, 
-            autoplay: false, 
+            loop: false,
+            speed: 300,
             freeMode: true,
-            freeModeMomentum: true, 
+            freeModeMomentum: true,
+            navigation: {
+                prevEl: prevBtn,
+                nextEl: nextBtn
+            },
             breakpoints: {
-                768: {
-                    slidesPerView: 2
-                },
-                1280: {
-                    slidesPerView: 3
-                }
+                768: { slidesPerView: 2 },
+                1280: { slidesPerView: 3 }
             }
         });
     });
@@ -289,7 +348,8 @@ function initHeroAnimation() {
     const termsContainer = document.querySelector('.hero__terms');
     const terms = termsContainer?.querySelectorAll('.hero__term');
     const subtitle = document.querySelector('.hero__subtitle');
-    const button = document.querySelector('.hero--button');
+    const buttons = document.querySelectorAll('.hero--button');
+
 
     if (!heroTitle) return;
 
@@ -345,9 +405,9 @@ function initHeroAnimation() {
     }
 
     function slideInButton() {
-        if (button) {
+        buttons.forEach(button => {
             button.classList.add('animate-in');
-        }
+        });
     }
 }
 

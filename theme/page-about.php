@@ -57,17 +57,15 @@ get_header();
     <div class="company-intro__container px-0!">
 
         <?php if ($image): ?>
-        <div class="company-intro__image" data-animate="fade-in-up">
-            <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>"
-                width="<?php echo esc_attr($image['width']); ?>" height="<?php echo esc_attr($image['height']); ?>"
-                loading="lazy" />
-        </div>
+            <div class="company-intro__image" data-animate="fade-in-up">
+                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" width="<?php echo esc_attr($image['width']); ?>" height="<?php echo esc_attr($image['height']); ?>" loading="lazy" />
+            </div>
         <?php endif; ?>
 
         <?php if ($content): ?>
-        <div class="company-intro__content" data-animate="fade-in-up">
-            <?php echo $content; ?>
-        </div>
+            <div class="company-intro__content" data-animate="fade-in-up">
+                <?php echo $content; ?>
+            </div>
         <?php endif; ?>
 
     </div>
@@ -80,6 +78,8 @@ get_header();
         <?php get_template_part( 'template-parts/layout/services', 'list' ); ?>
     </div>
 </section>
+
+<?php get_template_part('template-parts/hero/hero', 'video'); ?>
 
 <?php get_template_part('template-parts/team', 'carousel'); ?>
 
@@ -133,7 +133,7 @@ $contact_form_text    = $contact['form_text'] ?? '';
 
             <aside class="quote__contact-info xl:pt-52" data-animate="fade-in-up">
                 <div class="quote__address-block">
-                    <h3 class="quote__address-title" data-animate="fade-in-up" >Postadres</h3>
+                    <h3 class="quote__address-title" data-animate="fade-in-up" >Headquarter</h3>
                     <?php if ($address): ?>
                         <address class="quote__address not-italic" data-animate="fade-in-up" ><?= nl2br(esc_html($address)) ?></address>
                     <?php endif; ?>
