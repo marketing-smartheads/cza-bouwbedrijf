@@ -4,6 +4,11 @@
     .uacf7-form-wrapper-container {
         @apply flex flex-col gap-4;
     }
+    .wpcf7-form-control {
+        &::placeholder {
+            @apply opacity-65;
+        }
+    }
     .wpcf7-form-control:not(.wpcf7-radio) {
         @apply w-full rounded-md border-[1px] border-solid px-8 py-5 flex items-center;
         &::placeholder {
@@ -37,17 +42,13 @@
         }
     }
     .form-control__wrapper {
-        @apply flex flex-col xl:flex-row gap-4
-    }
-}
-
-body{
-    &.home{
-        .form-control__wrapper {
-            @apply flex-col!;
+        @apply flex flex-col xl:flex-row gap-4;
+        label {
+            @apply font-bold;
         }
     }
 }
+
 /* Validation */
 .wpcf7 form.invalid .wpcf7-response-output, .wpcf7 form.unaccepted .wpcf7-response-output, .wpcf7 form.payment-required .wpcf7-response-output {
     @apply border-none;

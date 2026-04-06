@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Header
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
-        header?.classList.toggle('is-fixed', window.scrollY > 100);
+        header?.classList.toggle('is-fixed', window.scrollY > 100)
     });
 
     if (window.matchMedia("(max-width: 1279px)").matches) {
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const inner = document.querySelector(".site-header__inner");
         const menu = document.querySelector(".menu");
         if (upper && inner && menu) {
-            menu.style.height = `calc(50vh - ${upper.offsetHeight}px - ${inner.offsetHeight}px)`;
+            menu.style.height = `calc(50vh - ${upper.offsetHeight}px - ${inner.offsetHeight}px)`
         }
     }
     
@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
         tham.addEventListener("click", () => {
             tham.classList.toggle("tham-active");
             mainNav.classList.toggle("is-active");
-            document.body.classList.toggle("lock-scroll");
-        });
+            document.body.classList.toggle("lock-scroll")
+        })
     }
     
     // Mobile menu
@@ -47,12 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
             // Toggle submenu
             if (!menuItem.classList.contains('open')) {
             e.preventDefault(); // voorkomt navigatie eerste klik
-            menuItem.classList.add('open');
+            menuItem.classList.add('open')
             } else {
             // tweede klik: laat navigatie doorgaan
             }
         }
-        });
+        })
     });
     
     // Hero
@@ -60,14 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
         const loader = video.closest('.hero__video-wrapper')?.querySelector('.hero__video-loader');
 
         function hideLoader() {
-            if (loader) loader.style.opacity = '0';
+            if (loader) loader.style.opacity = '0'
         }
 
         video.addEventListener('loadeddata', hideLoader);
         video.addEventListener('canplay', hideLoader);
 
         // fallback na 3 sec
-        setTimeout(hideLoader, 3000);
+        setTimeout(hideLoader, 3000)
     });
 
     // ===============================
@@ -87,13 +87,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!placeholder.hasChildNodes()) {
         placeholder.appendChild(sibContainer.querySelector(".sib-form"));
-        sibContainer.style.display = "none";
+        sibContainer.style.display = "none"
     }
     };
 
     const closePopup = () => {
     popup.classList.remove("active");
-    overlay.classList.remove("active");
+    overlay.classList.remove("active")
     };
 
     setTimeout(showPopup, 20000);
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
     closeBtn.addEventListener("click", closePopup);
     overlay.addEventListener("click", closePopup);
     document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closePopup();
+    if (e.key === "Escape") closePopup()
     });
 
     // ===============================
@@ -123,12 +123,12 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!form.checkValidity()) {
         e.preventDefault();
         e.stopImmediatePropagation(); // 🔑 dit is cruciaal
-        return;
+        return
         }
 
         // ✅ Geldig → success-tekst tonen
         submitText.textContent =
-        "Klaar voor een dosis inspiratie? Bekijk uw mailbox.";
+        "Klaar voor een dosis inspiratie? Bekijk uw mailbox."
     },
     true // 👈 capture phase
     );
@@ -150,12 +150,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const w = window.innerWidth;
             if (w < 640) return 1;
             if (w < 1024) return 2;
-            return 3;
+            return 3
         }
 
         function getItemWidth() {
             const item = items[0];
-            return item ? item.getBoundingClientRect().width + gap : 0;
+            return item ? item.getBoundingClientRect().width + gap : 0
         }
 
         function updateTransform() {
@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (currentIndex > maxIndex) currentIndex = 0;
             if (currentIndex < 0) currentIndex = maxIndex;
             carousel.style.transition = 'transform 0.3s ease-in-out';
-            carousel.style.transform = `translateX(-${currentIndex * getItemWidth()}px)`;
+            carousel.style.transform = `translateX(-${currentIndex * getItemWidth()}px)`
         }
 
         // --- Navigation buttons ---
@@ -173,22 +173,22 @@ document.addEventListener("DOMContentLoaded", () => {
             if (prev && next) {
             prev.addEventListener('click', () => {
                 currentIndex--;
-                updateTransform();
+                updateTransform()
             });
             next.addEventListener('click', () => {
                 currentIndex++;
-                updateTransform();
-            });
+                updateTransform()
+            })
             }
             window.addEventListener('resize', updateTransform);
-            updateTransform();
+            updateTransform()
         }
 
         // --- Native scroll (wheel) ---
         carousel.addEventListener('wheel', (e) => {
             if (!hasNav) {
             e.preventDefault();
-            carousel.scrollLeft += e.deltaY;
+            carousel.scrollLeft += e.deltaY
             }
         }, { passive: false });
 
@@ -197,16 +197,16 @@ document.addEventListener("DOMContentLoaded", () => {
             isDragging = true;
             startX = e.pageX;
             scrollStart = hasNav ? null : carousel.scrollLeft;
-            carousel.classList.add('is-dragging');
+            carousel.classList.add('is-dragging')
         });
 
         window.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
             const delta = e.pageX - startX;
             if (hasNav) {
-            carousel.style.transform = `translateX(calc(-${currentIndex * getItemWidth()}px + ${delta}px))`;
+            carousel.style.transform = `translateX(calc(-${currentIndex * getItemWidth()}px + ${delta}px))`
             } else {
-            carousel.scrollLeft = scrollStart - delta;
+            carousel.scrollLeft = scrollStart - delta
             }
         });
 
@@ -218,22 +218,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const threshold = 50;
             if (hasNav && Math.abs(delta) > threshold) {
             currentIndex += delta < 0 ? 1 : -1;
-            updateTransform();
+            updateTransform()
             }
         });
 
         // --- Touch swipe ---
         carousel.addEventListener('touchstart', (e) => {
             startX = e.touches[0].pageX;
-            scrollStart = hasNav ? null : carousel.scrollLeft;
+            scrollStart = hasNav ? null : carousel.scrollLeft
         }, { passive: true });
 
         carousel.addEventListener('touchmove', (e) => {
             const delta = e.touches[0].pageX - startX;
             if (hasNav) {
-            carousel.style.transform = `translateX(calc(-${currentIndex * getItemWidth()}px + ${delta}px))`;
+            carousel.style.transform = `translateX(calc(-${currentIndex * getItemWidth()}px + ${delta}px))`
             } else {
-            carousel.scrollLeft = scrollStart - delta;
+            carousel.scrollLeft = scrollStart - delta
             }
         }, { passive: true });
 
@@ -242,9 +242,9 @@ document.addEventListener("DOMContentLoaded", () => {
             const threshold = 50;
             if (hasNav && Math.abs(delta) > threshold) {
             currentIndex += delta < 0 ? 1 : -1;
-            updateTransform();
+            updateTransform()
             }
-        });
+        })
     });
 
    
@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!slide) return;
 
         const slideWidth = slide.offsetWidth;
-        track.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+        track.scrollBy({ left: direction * slideWidth, behavior: 'smooth' })
     }
 
     window.scrollCarousel = scrollCarousel;
@@ -286,7 +286,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 slidesPerView: 3
             }
             }
-        });
+        })
     });
     
     document.querySelectorAll('.tips-slider').forEach((wrapper) => {
@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 768: { slidesPerView: 2 },
                 1280: { slidesPerView: 3 }
             }
-        });
+        })
     });
 
     // Reveal animation
@@ -320,26 +320,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 const delay = parseInt(el.dataset.delay) || 0;
 
                 setTimeout(() => {
-                    el.classList.add("is-visible");
+                    el.classList.add("is-visible")
                 }, delay);
                 
                 // Stop observing once triggered
-                observer.unobserve(el);
+                observer.unobserve(el)
             }
-        });
+        })
     }, { threshold: 0.2 });
 
     document.querySelectorAll("[data-animate]").forEach((el) => observer.observe(el));
 
    document.addEventListener('wpcf7mailsent', function(event) {
-        window.location.href = 'https://czabouwbedrijf.nl/bedankt';
+        window.location.href = 'https://czabouwbedrijf.nl/bedankt'
     }, false);
+
+    document.addEventListener('wpcf7submit', function(event) {
+            gtag('event', 'generate_lead', {
+            event_category: 'contact',
+            event_label: 'contactformulier',
+            value: 1
+        })
+    }, false);
+
 
     // Animation
     initHeroAnimation();
     initCompanyAnimation();
     initCompanyTooltip();
-    initScrollAnimations();
+    initScrollAnimations()
     
 });
 
@@ -365,19 +374,19 @@ function initHeroAnimation() {
         if (i < fullText.length) {
             leadingNode.textContent += fullText.charAt(i);
             i++;
-            setTimeout(type, speed);
+            setTimeout(type, speed)
         } else {
             revealTerms();
             startTermsRotation();
             slideInSubtitle();
-            slideInButton();
+            slideInButton()
         }
     };
     type();
 
     function revealTerms() {
         if (termsContainer) {
-            termsContainer.style.visibility = 'visible';
+            termsContainer.style.visibility = 'visible'
         }
     }
 
@@ -386,28 +395,28 @@ function initHeroAnimation() {
         let index = 0;
         terms.forEach((term, i) => {
             term.style.opacity = i === 0 ? '1' : '0';
-            term.style.height = i === 0 ? '1.5em' : '0';
+            term.style.height = i === 0 ? '1.5em' : '0'
         });
 
         setInterval(() => {
             terms.forEach((term, i) => {
                 term.style.opacity = i === index ? '1' : '0';
-                term.style.height = i === index ? '1.5em' : '0';
+                term.style.height = i === index ? '1.5em' : '0'
             });
-            index = (index + 1) % terms.length;
-        }, 2550);
+            index = (index + 1) % terms.length
+        }, 2550)
     }
 
     function slideInSubtitle() {
         if (subtitle) {
-            subtitle.classList.add('animate-in');
+            subtitle.classList.add('animate-in')
         }
     }
 
     function slideInButton() {
         buttons.forEach(button => {
-            button.classList.add('animate-in');
-        });
+            button.classList.add('animate-in')
+        })
     }
 }
 
@@ -432,10 +441,10 @@ function initCompanyAnimation() {
                     companyTitle.textContent += originalText.charAt(i);
                     i++;
                     if (i >= originalText.length) {
-                        clearInterval(interval);
+                        clearInterval(interval)
                     }
                 }, 120);
-                typed = true;
+                typed = true
             }
         }
     };
@@ -447,15 +456,15 @@ function initCompanyAnimation() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                activateCompany();
+                activateCompany()
             }
-        });
+        })
     }, {
         threshold: 0.4 // pas aan voor eerder/later triggeren
     });
 
     if (companySection) {
-        observer.observe(companySection);
+        observer.observe(companySection)
     }
 }
 
@@ -485,14 +494,14 @@ function initCompanyTooltip() {
                     clearTimeout(tooltipTimeout);
                     tooltipTimeout = setTimeout(() => {
                         tooltip.classList.add('opacity-100');
-                        lastClicked = null;
-                    }, 3000);
+                        lastClicked = null
+                    }, 3000)
                 } else {
-                    window.open(linkUrl, linkTarget);
+                    window.open(linkUrl, linkTarget)
                 }
             }
-        });
-    });
+        })
+    })
 }
 
 function initScrollAnimations() {
@@ -504,18 +513,18 @@ function initScrollAnimations() {
         const delay = parseFloat(el.dataset.delay) || 0;
 
         setTimeout(() => {
-          el.classList.add('is-visible');
+          el.classList.add('is-visible')
         }, delay * 1000);
 
-        observer.unobserve(el);
+        observer.unobserve(el)
       }
-    });
+    })
   }, {
     threshold: 0.1,
     rootMargin: '0px 0px -10% 0px'
   });
 
-  elements.forEach(el => observer.observe(el));
+  elements.forEach(el => observer.observe(el))
 }
 
 document.addEventListener('DOMContentLoaded', initScrollAnimations);

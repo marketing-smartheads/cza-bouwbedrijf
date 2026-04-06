@@ -21,6 +21,19 @@ _tw is based on Underscores https://underscores.me/ and Varia https://github.com
 Underscores and Varia are distributed under the terms of the GNU GPL v2 or later.
 */
 
+
+.no-featured-image {
+    .site-header {
+        .sub-menu {
+            .menu-item {
+                a {
+                    @apply text-white! transition hover:text-primary!;
+                }
+            }
+        }
+    }
+}
+
 .site-header {
     @apply w-full fixed top-0 z-10 transition-all ease-in-out;
     ul {
@@ -38,9 +51,9 @@ Underscores and Varia are distributed under the terms of the GNU GPL v2 or later
                 }
             };
         }
-        .sub-menu {
-            @apply top-[6.2rem];    
-        }
+        /* .sub-menu {
+            @apply top-[3.5rem];    
+        } */
     }
     @media(max-width:1281px){
         .main-nav {

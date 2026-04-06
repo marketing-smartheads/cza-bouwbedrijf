@@ -269,4 +269,9 @@ function theme_enqueue_brevo_form_assets() {
 }
 add_action('wp_enqueue_scripts', 'theme_enqueue_brevo_form_assets');
 
-
+add_filter( 'body_class', function( $classes ) {
+    if ( is_singular() && ! has_post_thumbnail() ) {
+        $classes[] = 'no-featured-image';
+    }
+    return $classes;
+});
