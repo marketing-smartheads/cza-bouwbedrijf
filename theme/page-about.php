@@ -164,6 +164,6 @@ $contact_form_text    = $contact['form_text'] ?? '';
 
 <?php get_template_part('template-parts/section', 'tiktok'); ?>
 
-
+<?php get_template_part('template-parts/section', 'certificates-slider'); ?>
 
 <?php get_footer(); ?>
